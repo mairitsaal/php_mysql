@@ -103,4 +103,5 @@ echo '<hr>';
 
 //Loo otsingukast, mis lubab valida,
 // kas otsing toimub artistide või albumite veerust.
+
 ?>
