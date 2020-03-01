@@ -1,13 +1,13 @@
 <?php
 //***protseduuriline***//
-//minu andmed
+//sinu andmed
 $db_server = 'localhost';
-$db_database = 'muusikapood';
-$db_user = 'juhan';
-$db_password = 'juhan';
+$db_andmebaas = 'muusikapood';
+$db_kasutaja = 'juhan';
+$db_salasona = 'juhan';
 //ühendus andmebaasiga
-$yhendus = mysqli_connect($db_server, $db_user, $db_password, $db_database);
-//yhenduse kontroll
+$yhendus = mysqli_connect($db_server, $db_kasutaja, $db_salasona, $db_andmebaas);
+//ühenduse kontroll
 if(!$yhendus){
     die('Ei saa ühendust andmebaasiga');
 }
@@ -15,4 +15,8 @@ if(!$yhendus){
 $paring = 'SELECT * FROM albumid';
 $valjund = mysqli_query($yhendus, $paring);
 
+
+while($rida = mysqli_fetch_row($valjund)){
+    var_dump($rida);
+}
 ?>
