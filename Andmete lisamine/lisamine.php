@@ -1,3 +1,14 @@
+<h2>Uue albumi lisamine</h2>
+<form action="" method="get">
+    <table>
+        <tr><td>Artist: </td><td><input type="text" name="artist" required></td></tr>
+        <tr><td>Album:</td><td> <input type="text" name="album" required></td></tr>
+        <tr><td>Aasta: </td><td><input type="number" name="aasta" value="2000" min="1900" max="2099" required></td></tr>
+        <tr><td>Hind: </td><td><input type="number" name="hind" value="1" min="1" max="100" step="0.1" required></td></tr>
+        <tr><td><input type="reset" value="Tühjenda"></td><td><input type="submit" value="LISA ALBUM"></td></tr>
+    </table>
+</form>
+
 <?php include('config.php'); ?>
 <?php
 if (!empty($_GET['artist']) && !empty($_GET['album']) && !empty($_GET['aasta']) &&  !empty($_GET['hind']) ) {
@@ -13,19 +24,9 @@ if (!empty($_GET['artist']) && !empty($_GET['album']) && !empty($_GET['aasta']) 
     if ($tulemus == 1) {
         echo "Kirje edukalt lisatud";
     } else {
-        echo "Kirjet ei lisatud";
+        echo "Uut albumit ei lisatud";
     }
     //ühenduse sulgemine
     mysqli_close($yhendus);
 }
 ?>
-<h2>Uue albumi lisamine</h2>
-<form action="" method="get">
-    <table>
-        <tr><td>Artist: </td><td><input type="text" name="artist" required></td></tr>
-        <tr><td>Album:</td><td> <input type="text" name="album" required></td></tr>
-        <tr><td>Aasta: </td><td><input type="number" name="aasta" value="2000" min="1900" max="2099" required></td></tr>
-        <tr><td>Hind: </td><td><input type="number" name="hind" value="1" min="1" max="100" step="0.1" required></td></tr>
-        <tr><td><input type="reset" value="Tühjenda"></td><td><input type="submit" value="LISA ALBUM"></td></tr>
-    </table>
-</form>

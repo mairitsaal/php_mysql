@@ -35,7 +35,7 @@ if(empty($_GET['id'])){
 		";
         $muuda_db = mysqli_query($yhendus, $muuda);
         if($muuda_db){
-            echo "edukalt muudetud, suuname <a href=\"http://saalmairit.ikt.khk.ee/public_html/Php_mysql/public_html/Andmete%20lisamine/andmeteUuendamine.php\">tagasi</a>";
+            echo "edukalt muudetud, suuname <a href=\"http://saalmairit.ikt.khk.ee/Php_mysql/public_html/Andmete%20lisamine/andmeteUuendamine.php\">tagasi</a>";
             echo '<META HTTP-EQUIV="Refresh" Content="2; URL=03_kustutamine.php">';
             die();
         } else {
