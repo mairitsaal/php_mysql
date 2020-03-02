@@ -1,15 +1,28 @@
+<?php include('config.php'); ?>
 <?php
 session_start();
 if (isset($_SESSION['tuvastamine'])) {
     header('Location: 07_admin.php');
     exit();
 }
+//kontrollime, kas kõik väljad on täidetud
 if (!empty($_POST['login']) && !empty($_POST['pass'])) {
-    $login = $_POST['login'];
-    $pass = $_POST['pass'];
-    if ($login=='admin' && $pass=='admin') {
+    //eemaldame kasutaja sisestusest kahtlase pahna
+    $login = htmlspecialchars(trim($_POST['login']));
+    $pass = htmlspecialchars(trim($_POST['pass']));
+
+    //uus kontroll
+    $sool = 'taiestisuvalinetekst';
+    $kryp = crypt($pass, $sool);
+//kontrollime kas andmebaasis on selline kasutaja ja parool
+    $paring = "SELECT * FROM kasutajad WHERE kasutaja= '$login' AND parool='$kryp'";
+    $valjund = mysqli_query($yhendus, $paring);
+    //kui on, siis loome sessiooni ja suuname
+    if (mysqli_num_rows($valjund)==1) {
         $_SESSION['tuvastamine'] = 'misiganes';
         header('Location: 07_admin.php');
+    } else {
+        echo "kasutaja või parool on vale";
     }
 }
 ?>
