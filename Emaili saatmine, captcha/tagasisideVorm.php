@@ -15,6 +15,10 @@
 //andmed vormist
 //kas väljad on täidetud
 if (isset($_POST['nimi']) && isset($_POST['email']) && isset($_POST['sonum'])){
+    if (!empty($nimi) && !empty($email) && !empty($sonum)) {
+            if (strlen($nimi)>25 || strlen($email)> 25 || strlen($sonum)>500 ) {
+
+            } else {
 
 $nimi = trim(addcslashes($_POST['nimi']));
 $email = trim(addslashes($_POST['email']));
@@ -32,6 +36,10 @@ if(mail($to, $subject, $message, $from)) {
 } else {
     echo "Teie emaili ei saadetud ära!";
 }
+}
+    } else {
+    $error = 'Palun täitke kõik väljad!';
+    }
 }
 
 ?>
